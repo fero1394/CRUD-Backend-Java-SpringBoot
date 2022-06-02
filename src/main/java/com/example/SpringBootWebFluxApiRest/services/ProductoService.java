@@ -13,9 +13,10 @@ public interface ProductoService {
 
     public Mono<Producto> guardar(Producto producto);
 
-
     public Mono<Producto> editar(Producto producto, String id);
 
     public Mono<Void> eliminar(String id);
+
+    public Mono<Producto> findByNombre(String nombre);
 
 }

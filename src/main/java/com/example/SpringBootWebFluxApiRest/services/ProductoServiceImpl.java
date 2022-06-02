@@ -5,19 +5,9 @@ import com.example.SpringBootWebFluxApiRest.documents.Producto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import javax.validation.Valid;
-import java.net.URI;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
@@ -55,5 +45,10 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public Mono<Void> eliminar(String id) {
         return dao.deleteById(id);
+    }
+
+    @Override
+    public Mono<Producto> findByNombre(String nombre) {
+        return dao.obtenerPorNombre(nombre);
     }
 }
