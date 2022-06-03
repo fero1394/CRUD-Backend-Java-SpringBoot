@@ -17,6 +17,8 @@ public interface ProductoService {
 
     public Mono<Void> eliminar(String id);
 
+    public Mono<Void> delete(Producto producto);
+
     public Mono<Producto> findByNombre(String nombre);
 
 }

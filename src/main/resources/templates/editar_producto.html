@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Producto</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Tienda de Productos Deportivos</a>
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link"
+                th:href="@{listar}">Tienda de Productos Deportivos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Edicion de Producto</h1>
+            <div class="card-body">
+                <form th:action="@{/producto/{id}(id=${producto.id})}" th:object="${producto}" method="POST">
+                    <br>
+                    <div class="form-group">
+                        <label>Nombre : </label>
+                        <input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Digite nombre del producto ">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Precio : </label>
+                        <input type="text" name="precio" th:field="*{precio}" class="form-control" placeholder="Digite Precio del producto ">
+                    </div>
+                    <br>
+                    <div class="box-footer">
+                        <button class="btn btn-success">Guardar</button>
+                    </div>
+
+                </form>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

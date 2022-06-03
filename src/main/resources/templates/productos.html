@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Productos</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Tienda de Productos Deportivos</a>
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link"
+                th:href="@{listar}">Tienda de Productos Deportivos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <br>
+        <div class="row">
+            <h1>Lista de Productos</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{/nuevo}" class="btn btn-primary btn-sm mb3">Agregar Producto</a>
+            </div>
+        </div>
+        <br>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="producto :${producto}">
+                <td th:text="${producto.id}">Id</td>
+                <td th:text="${producto.nombre}">Nombre</td>
+                <td th:text="${producto.precio}">Precio</td>
+                <td th:text="${producto.createdAt}">Fecha</td>
+                <td>
+                    <a th:href="@{/producto/editar/{id}(id=${producto.id})}" class="btn btn-info">Editar</a>
+                    <a th:href="@{/eliminar/{id}(id=${producto.id})}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

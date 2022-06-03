@@ -15,9 +15,9 @@ import reactor.core.publisher.Mono;
 
 import java.util.Collections;
 
-
+@AutoConfigureWebTestClient
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 class SpringBootWebFluxApiRestApplicationTests {
 
 	@Autowired
@@ -37,9 +37,7 @@ class SpringBootWebFluxApiRestApplicationTests {
 				.uri("/api/tiendaDeportiva/")
 				.accept(MediaType.APPLICATION_JSON)
 				.exchange()
-				.expectStatus().isOk()
-				.expectHeader().contentType(MediaType.APPLICATION_JSON)
-				.expectBodyList(Producto.class);
+				.expectStatus().isOk();
 	}
 
 	@Test

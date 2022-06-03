@@ -37,7 +37,7 @@ public class ProductoServiceImpl implements ProductoService {
         return dao.findById(id).flatMap(p -> {
             p.setNombre(producto.getNombre());
             p.setPrecio(producto.getPrecio());
-            p.setCreatedAt(producto.getCreatedAt());
+            //p.setCreatedAt(producto.getCreatedAt());
             return dao.save(p);
         });
     };
@@ -45,6 +45,11 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public Mono<Void> eliminar(String id) {
         return dao.deleteById(id);
+    }
+
+    @Override
+    public Mono<Void> delete(Producto producto) {
+        return dao.delete(producto);
     }
 
     @Override
